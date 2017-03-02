@@ -11,4 +11,17 @@ app.controller("SoittilaCtrl", function($scope, $firebaseObject) {
 
   $scope.alltemps = $firebaseObject(ref.child('greeGasCold').child('name'));
 
+  $scope.progressbartype = function(temp) {
+  	types = ['success','info','warning','danger'];
+  	
+  	if (temp < 15)
+  		type = types[1];
+  	else if (15 <= temp  && temp <= 22)
+  		type = types[0];
+  	else if (22 < temp && temp <= 26)
+  		type = types[2];
+  	else
+  		type = types[3];
+  	return type;
+  };
 });
